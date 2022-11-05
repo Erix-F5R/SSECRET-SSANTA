@@ -6,8 +6,10 @@ import styled from "styled-components";
 function App() {
   const [toggle, setToggle] = useState(false);
 
-  const handleToggle = () => {
-    setToggle(!toggle);
+  const handleToggle = (whichDidIClick) => {
+
+    whichDidIClick? setToggle(true):setToggle(false);
+
   };
 
   return (
@@ -16,8 +18,8 @@ function App() {
         <Container>
           <Title>SSECRET SSANTA</Title>
           <Toggle>
-            <Page onClick={handleToggle}>Make A List</Page>
-            <Page onClick={handleToggle}>Check It Twice</Page>
+            <Page underline={toggle} onClick={() => {handleToggle(true)} }>Make A List</Page>
+            <Page underline={!toggle} onClick={() => {handleToggle(false)} }>Check It Twice</Page>
           </Toggle>
           <MakingAList toggled={toggle} />
           <CheckingItTwice toggled={toggle} />
@@ -46,6 +48,7 @@ const Container = styled.div`
   width: 100%;
   padding: 1rem;
   border: 10px dotted darkgreen;
+  border-radius: 30px;
   display: flex;
   flex-direction: column;
 
@@ -55,6 +58,7 @@ const Title = styled.div`
   font-weight: bold;
   font-size: 2rem;
   align-self: center;
+  color: darkgreen;
 
 `;
 
@@ -67,6 +71,10 @@ const Toggle = styled.div`
 const Page = styled.a`
   color: darkred;
   font-size: 1.3rem;
+
+  transition: 0.2s;
+  text-decoration: ${props => props.underline ? 'underline wavy darkgreen': 'none'};
+
 
   &:hover {
     color: darkgreen;

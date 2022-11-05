@@ -112,6 +112,11 @@ const NamesBox = styled.div`
 
 const PlusIcon = styled.a`
   font-size: 1.8rem;
+  color: darkgreen;
+
+  &:hover {
+    color: darkred;
+  }
 `;
 
 const PlusBox = styled.div`
@@ -127,6 +132,12 @@ const XIcon = styled.a`
   position: absolute;
   right: -5px;
   display: flex;
+
+  color: darkgreen;
+
+  &:hover {
+    color: darkred;
+  }
 `;
 
 const ShuffleButton = styled.button`
@@ -134,6 +145,19 @@ const ShuffleButton = styled.button`
   width: fit-content;
   font-size: 1.7rem;
   font-family: "Mountains of Christmas", cursive;
+  color: white;
+  background: darkgreen;
+  padding: 0.5rem 1.5rem;
+  border-radius: 15%;
+  border: 5px dashed white;
+
+  &:hover {
+    background: darkred;
+  }
+
+  &:active {
+    border: 5px dashed darkgreen;
+  }
 `;
 
 const Results = styled.div``;

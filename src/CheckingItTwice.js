@@ -5,7 +5,8 @@ import styled from "styled-components";
 const CheckingItTwice = ({ toggled }) => {
   const [who, setWho] = useState();
 
-  console.log(CypherDecoder('IUKQZCEMZOQEYUFGXQGBQTBTBTB'))
+  const [decoded, setDecoded] = useState();
+
   const handleChange = (event) => {
     setWho(event.target.value);
   };
@@ -15,16 +16,17 @@ const CheckingItTwice = ({ toggled }) => {
       {!toggled && (
         <Container>
           <Border>
-            <StyledInput onChange={(ev) => handleChange(ev)} />
+            <StyledInput onChange={(ev) => handleChange(ev)} placeholder='Enter your code here...'/>
           </Border>
-          <button
+          <Button
             onClick={() => {
-              window.alert(`You got ${CypherDecoder(who)}`);
+              setDecoded(CypherDecoder(who))
             }}
+            
           >
             Who'd you get?
-          </button>
-          
+          </Button>
+          {decoded && <ResultBox>You better find out if... <br/> <Span>{decoded}</Span> <br/> ...was naughty or nice</ResultBox>}
         </Container>
       )}
     </>
@@ -34,6 +36,28 @@ const CheckingItTwice = ({ toggled }) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const Button = styled.button`
+margin: 2rem;
+  align-self: center;
+  width: fit-content;
+  font-size: 1.7rem;
+  font-family: "Mountains of Christmas", cursive;
+  color:white;
+  background: darkred;
+  padding: 0.5rem 1.5rem;
+  border-radius: 15%;
+  border: 5px dashed white;
+
+  &:hover{
+    background: darkgreen;
+  }
+
+  &:active{
+    border: 5px dashed darkred;
+  }
+
 `;
 
 const StyledInput = styled.input`
@@ -55,5 +79,19 @@ const Border = styled.div`
   margin-bottom: 0.2rem;
 
   display: flex;
+`;
+
+const ResultBox = styled.div`
+  color: white;
+  font-size: 2rem;
+  margin: 2rem;
+  padding: 1rem;
+  background: darkgreen;
+  border: dotted white 10px;
+  border-radius: 3rem;
+`;
+
+const Span = styled.span`
+  padding-left: 3rem;
 `;
 export default CheckingItTwice;

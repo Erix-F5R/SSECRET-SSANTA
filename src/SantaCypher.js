@@ -36,7 +36,7 @@ export const CypherEncoder = (name) => {
 
   let encodedName = name.toUpperCase();
 
-  encodedName = xmasWord() + xmasWord() + encodedName + xmasWord() + xmasWord();
+  encodedName = xmasWord() + xmasWord() + encodedName + xmasWord()  + `${Math.floor(Math.random() * 2) === 0 ? xmasWord() : ''}`;
 
   const code = encodedName.split("").map((char) => Shift(char));
 
