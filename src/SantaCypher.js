@@ -44,6 +44,7 @@ export const CypherEncoder = (name) => {
 };
 
 export const CypherDecoder = (code) => {
+  
   const xmasDictionary = [
     "HOHOHO",
     "MRSCLAUS",

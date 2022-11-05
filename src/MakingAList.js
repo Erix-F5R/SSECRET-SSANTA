@@ -2,13 +2,17 @@ import { useState } from "react";
 import Input from "./Input";
 import { CypherEncoder } from "./SantaCypher";
 import styled from "styled-components";
+import { FiPlus, FiX } from "react-icons/fi";
 
-const MakingAList = () => {
+const MakingAList = ({ toggled }) => {
   const [giftGivers, setGiftGivers] = useState([
     { order: 0, giver: "", givee: "" },
     { order: 1, giver: "", givee: "" },
     { order: 2, giver: "", givee: "" },
+    { order: 3, giver: "", givee: "" },
   ]);
+
+  const [hiddenList, setHiddenList] = useState(false);
 
   const removeGiftGiver = () => {
     const lastIndex = giftGivers.findIndex(
@@ -45,53 +49,99 @@ const MakingAList = () => {
     }, names[names.length - 1]);
 
     setGiftGivers([...shallowGG]);
+    setHiddenList(true);
   };
 
   return (
-    <Container>
-      Making A List
-      <NamesBox>
-      <Names>
-      {giftGivers.map((gg, index) => (
-        <Input index={index} handleChange={handleChange} />
-      ))}
-      </Names>
-      <XIcon onClick={() => removeGiftGiver()}>X</XIcon>
-      </NamesBox>
-      <a
-        onClick={() => {
-          setGiftGivers([
-            ...giftGivers,
-            { order: giftGivers.length, giver: "", givee: "" },
-          ]);
-        }}
-      >
-        +
-      </a>
-      <a onClick={() => shuffle()}>Shuffle</a>
-    </Container>
+    <>
+      {toggled && (
+        <Container>
+          <NamesBox>
+            <Names>
+              {giftGivers.map((gg, index) => (
+                <Input index={index} handleChange={handleChange} />
+              ))}
+            </Names>
+            <XIcon onClick={() => removeGiftGiver()}>
+              <FiX />
+            </XIcon>
+          </NamesBox>
+          <PlusBox>
+            <PlusIcon
+              onClick={() => {
+                setGiftGivers([
+                  ...giftGivers,
+                  { order: giftGivers.length, giver: "", givee: "" },
+                ]);
+              }}
+            >
+              <FiPlus />
+            </PlusIcon>
+          </PlusBox>
+          <ShuffleButton onClick={() => shuffle()}>Shuffle Names</ShuffleButton>
+          <Results>
+            {hiddenList &&
+              giftGivers.map((person) => (
+                <>
+                  <Giver>{person.giver} gives to...</Giver>
+                  <Givee>{person.givee}</Givee>
+                </>
+              ))}
+          </Results>
+        </Container>
+      )}
+    </>
   );
 };
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    border: 1px solid red;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Names = styled.div`
-    display: flex;
-    flex-direction: column;
-    border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 const NamesBox = styled.div`
-    display: flex;
-    border: 1px solid green;
+  display: flex;
+  position: relative;
 `;
 
+const PlusIcon = styled.a`
+  font-size: 1.8rem;
+`;
+
+const PlusBox = styled.div`
+  width: 90%;
+  display: flex;
+  justify-content: center;
+`;
 
 const XIcon = styled.a`
-    align-self: end;
-`
+  align-self: end;
+  font-size: 1.8rem;
+
+  position: absolute;
+  right: -5px;
+  display: flex;
+`;
+
+const ShuffleButton = styled.button`
+  align-self: center;
+  width: fit-content;
+  font-size: 1.7rem;
+  font-family: "Mountains of Christmas", cursive;
+`;
+
+const Results = styled.div``;
+
+const Giver = styled.div`
+  margin-top: 1.3rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+`;
+const Givee = styled.div``;
 export default MakingAList;
