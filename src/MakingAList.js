@@ -14,6 +14,8 @@ const MakingAList = ({ toggled }) => {
 
   const [hiddenList, setHiddenList] = useState(false);
 
+  
+
   const removeGiftGiver = () => {
     const lastIndex = giftGivers.findIndex(
       (obj) => obj.order === giftGivers.length - 1
@@ -78,7 +80,7 @@ const MakingAList = ({ toggled }) => {
               <FiPlus />
             </PlusIcon>
           </PlusBox>
-          <ShuffleButton onClick={() => shuffle()}>Shuffle Names</ShuffleButton>
+          <ShuffleButton disabled={giftGivers.some(giver => giver.giver === "")} onClick={() => shuffle()}>Shuffle Names</ShuffleButton>
           <Results>
             {hiddenList &&
               giftGivers.map((person) => (
