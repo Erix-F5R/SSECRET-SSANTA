@@ -16,17 +16,29 @@ const CheckingItTwice = ({ toggled }) => {
       {!toggled && (
         <Container>
           <Border>
-            <StyledInput onChange={(ev) => handleChange(ev)} placeholder='Enter your code here...'/>
+            <StyledInput
+              onChange={(ev) => handleChange(ev)}
+              placeholder="Enter your code here..."
+            />
           </Border>
           <Button
             onClick={() => {
-              setDecoded(CypherDecoder(who))
+              setDecoded(CypherDecoder(who));
             }}
-            
           >
             Who'd you get?
           </Button>
-          {decoded && <ResultBox>You better find out if... <br/> <Span>{decoded}</Span> <br/> ...was naughty or nice</ResultBox>}
+          {decoded ? (
+            <ResultBox>
+              You better find out if... <br /> <Span>{decoded}</Span> <br />{" "}
+              ...was naughty or nice
+            </ResultBox>
+          ) : (
+            <HintBox>
+              Want to crack the code yourself?
+              <br /> Here's a hint: <br /> ROUDOLF → EBHPBXR
+            </HintBox>
+          )}
         </Container>
       )}
     </>
@@ -39,25 +51,24 @@ const Container = styled.div`
 `;
 
 const Button = styled.button`
-margin: 2rem;
+  margin: 2rem;
   align-self: center;
   width: fit-content;
   font-size: 1.7rem;
   font-family: "Mountains of Christmas", cursive;
-  color:white;
+  color: white;
   background: darkred;
   padding: 0.5rem 1.5rem;
   border-radius: 15%;
   border: 5px dashed white;
 
-  &:hover{
+  &:hover {
     background: darkgreen;
   }
 
-  &:active{
+  &:active {
     border: 5px dashed darkred;
   }
-
 `;
 
 const StyledInput = styled.input`
@@ -89,6 +100,16 @@ const ResultBox = styled.div`
   background: darkgreen;
   border: dotted white 10px;
   border-radius: 3rem;
+`;
+
+const HintBox = styled.div`
+  color: darkgreen;
+  font-size: 1.5rem;
+  margin: 2rem;
+  padding: 1.5rem;
+  border: dotted darkred 10px;
+  border-radius: 3rem;
+  font-weight: bold;
 `;
 
 const Span = styled.span`
