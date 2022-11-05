@@ -33,12 +33,14 @@ function App() {
 
 const Screen = styled.div`
   width: 95vw;
-  height: 100%;
+  
+  @media (max-width: 500px){
+    min-height: 95vh;
+  }
+
   display: flex;
   justify-content: center;
-
   font-family: "Mountains of Christmas", cursive;
-
 
 `;
 
@@ -52,6 +54,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+ 
 `;
 
 const Title = styled.div`
