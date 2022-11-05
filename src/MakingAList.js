@@ -110,7 +110,7 @@ const NamesBox = styled.div`
   position: relative;
 `;
 
-const PlusIcon = styled.a`
+const PlusIcon = styled.div`
   font-size: 1.8rem;
   color: darkgreen;
 
@@ -125,7 +125,7 @@ const PlusBox = styled.div`
   justify-content: center;
 `;
 
-const XIcon = styled.a`
+const XIcon = styled.div`
   align-self: end;
   font-size: 1.8rem;
 

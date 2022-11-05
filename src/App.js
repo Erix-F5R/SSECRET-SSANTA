@@ -68,7 +68,7 @@ const Toggle = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Page = styled.a`
+const Page = styled.div`
   color: darkred;
   font-size: 1.3rem;
 
