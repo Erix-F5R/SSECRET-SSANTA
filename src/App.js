@@ -7,9 +7,7 @@ function App() {
   const [toggle, setToggle] = useState(false);
 
   const handleToggle = (whichDidIClick) => {
-
-    whichDidIClick? setToggle(true):setToggle(false);
-
+    whichDidIClick ? setToggle(true) : setToggle(false);
   };
 
   return (
@@ -18,30 +16,41 @@ function App() {
         <Container>
           <Title>SSECRET SSANTA</Title>
           <Toggle>
-            <Page underline={toggle} onClick={() => {handleToggle(true)} }>Make A List</Page>
-            <Page underline={!toggle} onClick={() => {handleToggle(false)} }>Check It Twice</Page>
+            <Page
+              underline={toggle}
+              onClick={() => {
+                handleToggle(true);
+              }}
+            >
+              Make A List
+            </Page>
+            <Page
+              underline={!toggle}
+              onClick={() => {
+                handleToggle(false);
+              }}
+            >
+              Check It Twice
+            </Page>
           </Toggle>
           <MakingAList toggled={toggle} />
           <CheckingItTwice toggled={toggle} />
         </Container>
       </Screen>
-
     </>
   );
 }
 
-
 const Screen = styled.div`
   width: 95vw;
-  
-  @media (max-width: 500px){
+
+  @media (max-width: 500px) {
     min-height: 95vh;
   }
 
   display: flex;
   justify-content: center;
   font-family: "Mountains of Christmas", cursive;
-
 `;
 
 const Container = styled.div`
@@ -53,8 +62,6 @@ const Container = styled.div`
   border-radius: 30px;
   display: flex;
   flex-direction: column;
-
- 
 `;
 
 const Title = styled.div`
@@ -62,7 +69,6 @@ const Title = styled.div`
   font-size: 2rem;
   align-self: center;
   color: darkgreen;
-
 `;
 
 const Toggle = styled.div`
@@ -76,8 +82,8 @@ const Page = styled.div`
   font-size: 1.3rem;
 
   transition: 0.2s;
-  text-decoration: ${props => props.underline ? 'underline wavy darkgreen': 'none'};
-
+  text-decoration: ${(props) =>
+    props.underline ? "underline wavy darkgreen" : "none"};
 
   &:hover {
     color: darkgreen;
