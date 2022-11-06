@@ -105,8 +105,8 @@ const ResultBox = styled.div`
 const HintBox = styled.div`
   color: darkgreen;
   font-size: 1.5rem;
-  margin: 2rem;
-  padding: 1.5rem;
+  margin: 2rem 1rem;
+  padding: 1.5rem 1rem;
   border: dotted darkred 10px;
   border-radius: 3rem;
   font-weight: bold;
