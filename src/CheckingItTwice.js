@@ -36,7 +36,7 @@ const CheckingItTwice = ({ toggled }) => {
           ) : (
             <HintBox>
               Want to crack the code yourself?
-              <br /> Here's a hint: <br /> ROUDOLF → EBHPBXR
+              <br /> Here's a hint: <br /> RUDOLPH → EHPBXCT
             </HintBox>
           )}
         </Container>

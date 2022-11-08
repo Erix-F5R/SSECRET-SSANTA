@@ -9,7 +9,7 @@ export const CypherEncoder = (name) => {
     "PRANCER",
     "FROSTY",
     "ELF",
-    "RUDOLF",
+    "RUDOLPH",
     "MISTLETOE",
   ];
 
