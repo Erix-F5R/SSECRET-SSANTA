@@ -52,7 +52,7 @@ export const CypherDecoder = (code) => {
     "PRANCER",
     "FROSTY",
     "ELF",
-    "RUDOLF",
+    "RUDOLPH",
     "MISTLETOE",
   ];
 
