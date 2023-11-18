@@ -14,7 +14,7 @@ function App() {
     <>
       <Screen>
         <Container>
-          <Title>SSECRET SSANTA</Title>
+          <Title>SSECRET SSANTA 2023</Title>
           <Toggle>
             <Page
               underline={toggle}
